@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shopping Cart Users</title>
+    <link rel="stylesheet" th:href="@{css/general.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Shopping Cart Users</h1>
+    <form action="#" th:action="@{/updateusers}" method="post">
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user}">User</td>
+                <td><input type="checkbox" th:name="userToDelete" th:value="${user}" /></td>
+
+            </tr>
+        </table>
+        <button type="submit">Update Users</button>
+    </form>
+    <div>
+        <a href="/newuser">Add new user</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

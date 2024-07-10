@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Item</title>
+    <link rel="stylesheet" th:href="@{css/general.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Delete Item</h1>
+
+    <form action="#" th:action="@{/delname}" method="post" th:object="${form}">
+        <table>
+            <tr>
+                <th>Item Name</th>
+                <th>Item Cost</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.key}"></td>
+                <td th:text="${item.value}"></td>
+                <td><input type="checkbox" th:name="itemToDelete" th:value="${item.key}" checked /></td>
+<!--                <td><input type="checkbox" th:name="itemToDelete" th:value="${item.key}" th:checked="${true}" th:field="*{checkedItems}" checked /></td>-->
+            </tr>
+        </table>
+        <input type="submit" value="Delete Selected Items" />
+    </form>
+
+    <a href="/cart">Back to Shopping Cart</a>
+</body>
+</html>

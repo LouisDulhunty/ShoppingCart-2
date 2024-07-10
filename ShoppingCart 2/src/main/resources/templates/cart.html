@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" th:href="@{css/general.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <form action="#" th:action="@{/updatecart}" method="post">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Count</th>
+            </tr>
+            <tr th:each="item : ${cartItems}">
+                <td th:text="${item.key}">Item</td>
+<!--                <td><input type="number" th:field="*{item.value}" th:name="${item.key}" th:value="${item.value}" /></td>-->
+                <td>
+                    <input type="number" step="1" min="0" max="2147483647" th:name="${item.key}" th:value="${item.value}" required/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Update Cart</button>
+    </form>
+    <p th:text="'Cart total: $' + ${total}" style="font-size: 2em;">
+    <div>
+        <a href="/newname">Add new item</a>
+        <a href="/delname">Remove item</a>
+        <a href="/updatename">Update item</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
